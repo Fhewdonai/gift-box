@@ -1,0 +1,289 @@
+:root {
+  --cream: #fff6f2;
+  --peach: #ffd9c7;
+  --rose: #ff8fa3;
+  --rose-deep: #c9184a;
+  --rose-soft: #ffe3ea;
+  --text: #5a2a38;
+  --text-soft: #8a5a68;
+  --shadow: 0 18px 45px rgba(201, 24, 74, 0.18);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Prompt", "Mali", sans-serif;
+  color: var(--text);
+  background: linear-gradient(160deg, #fff1ec 0%, #ffe0e6 45%, #ffd0d8 100%);
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(255, 255, 255, 0.75), transparent 45%),
+    radial-gradient(circle at 85% 15%, rgba(255, 214, 224, 0.7), transparent 50%),
+    radial-gradient(circle at 50% 95%, rgba(255, 199, 214, 0.6), transparent 55%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ---------- หัวใจลอย ---------- */
+.hearts {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.heart {
+  position: absolute;
+  bottom: -40px;
+  font-size: 18px;
+  animation: floatUp linear forwards;
+  opacity: 0;
+  filter: drop-shadow(0 2px 6px rgba(201, 24, 74, 0.25));
+}
+
+@keyframes floatUp {
+  0% { transform: translateY(0) scale(0.7) rotate(0deg); opacity: 0; }
+  12% { opacity: 0.95; }
+  80% { opacity: 0.95; }
+  100% { transform: translateY(-110vh) scale(1.2) rotate(30deg); opacity: 0; }
+}
+
+/* ---------- หน้าเปิดกล่อง ---------- */
+.intro {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 34px;
+  background: linear-gradient(160deg, #fff1ec, #ffd6df);
+  z-index: 20;
+  transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+
+.intro.hide {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.gift-box {
+  position: relative;
+  width: 160px;
+  height: 140px;
+  cursor: pointer;
+  animation: boxBounce 2.4s ease-in-out infinite;
+  filter: drop-shadow(0 14px 24px rgba(201, 24, 74, 0.3));
+}
+
+@keyframes boxBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-14px); }
+}
+
+.gift-box .lid {
+  position: absolute;
+  top: 0;
+  left: -8px;
+  width: 176px;
+  height: 40px;
+  background: var(--rose);
+  border-radius: 10px;
+  transform-origin: left bottom;
+  transition: transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: inset 0 -6px 0 rgba(0, 0, 0, 0.08);
+  z-index: 2;
+}
+
+.gift-box .box {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 160px;
+  height: 100px;
+  background: linear-gradient(180deg, #ff9db0, #f2708c);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.gift-box .ribbon-v {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  width: 26px;
+  height: 100%;
+  background: #fff0f4;
+}
+
+.gift-box .ribbon-h {
+  position: absolute;
+  top: 42%;
+  left: 0;
+  width: 100%;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.65);
+}
+
+.gift-box.open .lid {
+  transform: translateY(-70px) rotate(-18deg);
+}
+
+.gift-box.open {
+  animation: none;
+}
+
+.intro-text {
+  font-family: "Mali", cursive;
+  font-size: 1.15rem;
+  color: var(--rose-deep);
+  letter-spacing: 0.5px;
+  animation: pulse 1.8s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.55; }
+  50% { opacity: 1; }
+}
+
+/* ---------- เนื้อหา ---------- */
+.content {
+  position: relative;
+  z-index: 2;
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 56px 20px 40px;
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 1s ease 0.2s, transform 1s ease 0.2s;
+}
+
+.content.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hero {
+  text-align: center;
+  margin-bottom: 42px;
+}
+
+.hero-sub {
+  font-family: "Mali", cursive;
+  color: var(--rose);
+  letter-spacing: 2px;
+  font-size: 1rem;
+  margin-bottom: 24px;
+  line-height: 1.5;
+}
+
+.hero-title {
+  font-family: "Mali", cursive;
+  font-size: clamp(2.2rem, 9vw, 3.2rem);
+  font-weight: 700;
+  color: var(--rose-deep);
+  line-height: 1.35;
+  text-shadow: 0 4px 18px rgba(201, 24, 74, 0.18);
+}
+
+.hero-note {
+  margin-top: 12px;
+  color: var(--text-soft);
+  font-weight: 300;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 24px;
+  padding: 30px 26px;
+  margin-bottom: 26px;
+  box-shadow: var(--shadow);
+}
+
+.card-title {
+  font-family: "Mali", cursive;
+  font-size: 1.5rem;
+  color: var(--rose-deep);
+  margin-bottom: 18px;
+  text-align: center;
+  position: relative;
+}
+
+.card-title::after {
+  content: "❤";
+  display: block;
+  font-size: 0.8rem;
+  color: var(--rose);
+  margin-top: 6px;
+}
+
+.message-body p {
+  line-height: 1.95;
+  margin-bottom: 12px;
+  color: var(--text);
+  text-align: center;
+  font-size: 1.02rem;
+}
+
+.message-body .signature {
+  font-family: "Mali", cursive;
+  color: var(--rose-deep);
+  font-size: 1.15rem;
+  margin-top: 20px;
+}
+
+.video-wrap {
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 10px 26px rgba(201, 24, 74, 0.22);
+  background: #2a0f16;
+  aspect-ratio: 16 / 9;
+}
+
+.video-wrap video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.video-hint {
+  margin-top: 14px;
+  text-align: center;
+  font-size: 0.82rem;
+  color: var(--text-soft);
+  opacity: 0.8;
+}
+
+.footer {
+  text-align: center;
+  color: var(--text-soft);
+  font-size: 0.9rem;
+  padding: 10px 0;
+  font-family: "Mali", cursive;
+}
+
+@media (max-width: 480px) {
+  .card { padding: 24px 18px; border-radius: 20px; }
+  .content { padding-top: 40px; }
+}
