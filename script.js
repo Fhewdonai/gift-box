@@ -13,28 +13,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const fromNameEl = document.getElementById("fromName");
   if (fromNameEl) fromNameEl.textContent = CONFIG.fromName;
 
-  const intro = document.getElementById("intro");
-  const content = document.getElementById("content");
-  const giftBox = document.getElementById("giftBox");
-
-  const openGift = () => {
-    if (giftBox.classList.contains("open")) return;
-    giftBox.classList.add("open");
-    setTimeout(() => {
-      intro.classList.add("hide");
-      content.classList.add("show");
-      content.setAttribute("aria-hidden", "false");
-    }, 650);
-  };
-
-  giftBox.addEventListener("click", openGift);
-  giftBox.addEventListener("keydown", (e) => {
-    if (e.key === "Enter" || e.key === " ") {
-      e.preventDefault();
-      openGift();
-    }
-  });
-
   spawnHearts();
   handleVideo();
 });
