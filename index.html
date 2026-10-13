@@ -10,22 +10,23 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <input type="checkbox" id="open-box" class="open-toggle" aria-hidden="true" />
   <div id="hearts" class="hearts"></div>
 
   <!-- หน้าเปิดกล่องของขวัญ -->
   <div id="intro" class="intro">
-    <div class="gift-box" id="giftBox" role="button" tabindex="0" aria-label="แตะเพื่อเปิดของขวัญ">
+    <label for="open-box" class="gift-box" aria-label="แตะเพื่อเปิดของขวัญ">
       <div class="lid"></div>
       <div class="box">
         <div class="ribbon-v"></div>
         <div class="ribbon-h"></div>
       </div>
-    </div>
+    </label>
     <p class="intro-text">แตะเพื่อเปิดของขวัญ</p>
   </div>
 
   <!-- เนื้อหาเว็บ -->
-  <main id="content" class="content" aria-hidden="true">
+  <main id="content" class="content">
     <header class="hero">
       <p class="hero-sub">Happy Anniversary 3 month</p>
       <h1 class="hero-title">
